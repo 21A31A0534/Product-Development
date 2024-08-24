@@ -1,0 +1,63 @@
+#ifndef PRODUCT_H
+#define PRODUCT_H
+
+#include <string>
+
+class Product {
+public:
+    Product(int id, const std::string& name, int quantity, double price);
+
+    int getId() const;
+    std::string getName() const;
+    int getQuantity() const;
+    double getPrice() const;
+
+    void setQuantity(int quantity);
+    void setPrice(double price);
+
+    std::string toString() const;
+
+private:
+    int id;
+    std::string name;
+    int quantity;
+    double price;
+};
+
+#endif // PRODUCT_H
+#include "product.h"
+#include <sstream>
+
+Product::Product(int id, const std::string& name, int quantity, double price)
+    : id(id), name(name), quantity(quantity), price(price) {}
+
+int Product::getId() const {
+    return id;
+}
+
+std::string Product::getName() const {
+    return name;
+}
+
+int Product::getQuantity() const {
+    return quantity;
+}
+
+double Product::getPrice() const {
+    return price;
+}
+
+void Product::setQuantity(int quantity) {
+    this->quantity = quantity;
+}
+
+void Product::setPrice(double price) {
+    this->price = price;
+}
+
+std::string Product::toString() const {
+    std::ostringstream oss;
+    oss << "ID: " << id << ", Name: " << name
+        << ", Quantity: " << quantity << ", Price: $" << price;
+    return oss.str();
+}
